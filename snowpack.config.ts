@@ -3,14 +3,7 @@ import type { SnowpackUserConfig } from 'snowpack';
 const ci = !!process.env.CI;
 
 export default <SnowpackUserConfig>{
-  plugins: [
-    [
-      '@snowpack/plugin-babel',
-      { presets: ['@babel/preset-typescript', ['@babel/preset-env', { modules: false }]] },
-    ],
-    '@snowpack/plugin-dotenv',
-    '@snowpack/plugin-svelte',
-  ],
+  plugins: ['@snowpack/plugin-babel', '@snowpack/plugin-dotenv', '@snowpack/plugin-svelte'],
   mount: {
     public: '/',
     src: '/_dist_',
