@@ -240,13 +240,13 @@
           "bytesInOutput": 731
         },
         "_dist_/App.js": {
-          "bytesInOutput": 611
+          "bytesInOutput": 669
         },
         "_dist_/index.js": {
           "bytesInOutput": 128
         }
       },
-      "bytes": 99806
+      "bytes": 99893
     },
     "../node_modules/.cache/snowpack/~~bundle~~/_dist_/pages/Page2.js": {
       "imports": [
@@ -262,7 +262,7 @@
           "bytesInOutput": 250
         }
       },
-      "bytes": 374
+      "bytes": 403
     },
     "../node_modules/.cache/snowpack/~~bundle~~/_dist_/pages/Page3.js": {
       "imports": [
@@ -278,7 +278,7 @@
           "bytesInOutput": 250
         }
       },
-      "bytes": 374
+      "bytes": 403
     },
     "../node_modules/.cache/snowpack/~~bundle~~/chunk.LAPLTLH4.js": {
       "imports": [],
