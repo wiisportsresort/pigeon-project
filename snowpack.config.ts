@@ -16,7 +16,7 @@ export default <SnowpackUserConfig>{
     open: 'none',
   },
   buildOptions: {
-    baseUrl: '/',
+    baseUrl: ci ? '/english-social-media-project' : '/',
     clean: ci,
     sourceMaps: ci,
   },
