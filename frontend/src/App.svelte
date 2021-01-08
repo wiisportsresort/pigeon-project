@@ -2,10 +2,15 @@
   import type { RouteDefinition } from 'svelte-spa-router';
   import Router from 'svelte-spa-router';
   import { wrap } from 'svelte-spa-router/wrap';
-  import Loading from './components/Loading.svelte';
   import AppBar from './components/AppBar.svelte';
+  import Loading from './components/Loading.svelte';
   import Home from './pages/Home.svelte';
+  import NotFound from './pages/NotFound.svelte';
+  import { Hydrator, hydratorData } from 'pigeon-generator';
 
+  const hydrator = new Hydrator(hydratorData);
+  hydrator.hydrate();
+  console.log(hydrator);
 
   const routes: RouteDefinition = {
     '/': Home,
@@ -17,11 +22,12 @@
       asyncComponent: () => import('./pages/Page3.svelte'),
       loadingComponent: Loading,
     }),
+    '*': NotFound,
   };
 </script>
 
 <style lang="scss" global>
-  @import 'modern-normalize/modern-normalize';
+  @import 'normalize';
 
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,

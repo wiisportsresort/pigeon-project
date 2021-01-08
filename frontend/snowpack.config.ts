@@ -1,6 +1,6 @@
 import type { SnowpackUserConfig } from 'snowpack';
 
-const ci = !!process.env.CI;
+const prod = !!process.env.CI || process.env.NODE_ENV === 'production';
 
 export default <SnowpackUserConfig>{
   plugins: ['@snowpack/plugin-babel', '@snowpack/plugin-dotenv', '@snowpack/plugin-svelte'],
@@ -16,18 +16,18 @@ export default <SnowpackUserConfig>{
     open: 'none',
   },
   buildOptions: {
-    baseUrl: ci ? '/english-social-media-project' : '/',
-    clean: ci,
-    sourceMaps: ci,
+    baseUrl: prod ? '/pigeon-project' : '/',
+    clean: prod,
+    sourceMaps: prod,
   },
   installOptions: {
-    treeshake: ci,
-    sourceMap: ci,
+    treeshake: prod,
+    sourceMap: prod,
   },
   experiments: {
     optimize: {
-      bundle: ci,
-      minify: ci,
+      bundle: prod,
+      minify: prod,
       target: 'es2018',
     },
   },

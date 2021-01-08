@@ -9,4 +9,4 @@
   $: svg = icon ? icons[icon].toSvg(attrs) : '';
 </script>
 
-<span>{@html svg}</span>
+{@html svg}

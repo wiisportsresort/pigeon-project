@@ -1,4 +1,8 @@
-.build
-build
-web_modules
-node_modules
+**/node_modules
+**/yarn-error.log
+
+frontend/build
+
+generator/dist
+generator/lib
+generator/src/lib/data*.json
