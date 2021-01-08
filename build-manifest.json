@@ -8,30 +8,30 @@
       "bytes": 1542,
       "imports": []
     },
-    "web_modules/common/index-828da665.js": {
-      "bytes": 16731,
+    "web_modules/common/index-5064bbf8.js": {
+      "bytes": 17550,
       "imports": []
     },
     "web_modules/svelte/internal.js": {
-      "bytes": 426,
+      "bytes": 471,
       "imports": [
         {
-          "path": "web_modules/common/index-828da665.js"
+          "path": "web_modules/common/index-5064bbf8.js"
         }
       ]
     },
-    "web_modules/common/wrap-14f018b7.js": {
+    "web_modules/common/wrap-aa6f377e.js": {
       "bytes": 4602,
       "imports": []
     },
     "web_modules/svelte-spa-router.js": {
-      "bytes": 26266,
+      "bytes": 26269,
       "imports": [
         {
-          "path": "web_modules/common/index-828da665.js"
+          "path": "web_modules/common/index-5064bbf8.js"
         },
         {
-          "path": "web_modules/common/wrap-14f018b7.js"
+          "path": "web_modules/common/wrap-aa6f377e.js"
         }
       ]
     },
@@ -39,7 +39,40 @@
       "bytes": 89,
       "imports": [
         {
-          "path": "web_modules/common/wrap-14f018b7.js"
+          "path": "web_modules/common/wrap-aa6f377e.js"
+        }
+      ]
+    },
+    "_dist_/components/AppBar.css": {
+      "bytes": 346,
+      "imports": []
+    },
+    "_dist_/components/PigeonIcon.css": {
+      "bytes": 125,
+      "imports": []
+    },
+    "_dist_/components/PigeonIcon.js": {
+      "bytes": 1539,
+      "imports": [
+        {
+          "path": "_dist_/components/PigeonIcon.css"
+        },
+        {
+          "path": "web_modules/svelte/internal.js"
+        }
+      ]
+    },
+    "_dist_/components/AppBar.js": {
+      "bytes": 1407,
+      "imports": [
+        {
+          "path": "_dist_/components/AppBar.css"
+        },
+        {
+          "path": "web_modules/svelte/internal.js"
+        },
+        {
+          "path": "_dist_/components/PigeonIcon.js"
         }
       ]
     },
@@ -51,7 +84,7 @@
       "bytes": 347,
       "imports": [
         {
-          "path": "web_modules/common/index-828da665.js"
+          "path": "web_modules/common/index-5064bbf8.js"
         }
       ]
     },
@@ -66,39 +99,6 @@
         },
         {
           "path": "web_modules/svelte/transition.js"
-        }
-      ]
-    },
-    "_dist_/components/AppBar.css": {
-      "bytes": 285,
-      "imports": []
-    },
-    "web_modules/feather-icons.js": {
-      "bytes": 158964,
-      "imports": []
-    },
-    "_dist_/components/Icon.js": {
-      "bytes": 1305,
-      "imports": [
-        {
-          "path": "web_modules/svelte/internal.js"
-        },
-        {
-          "path": "web_modules/feather-icons.js"
-        }
-      ]
-    },
-    "_dist_/components/AppBar.js": {
-      "bytes": 1448,
-      "imports": [
-        {
-          "path": "_dist_/components/AppBar.css"
-        },
-        {
-          "path": "web_modules/svelte/internal.js"
-        },
-        {
-          "path": "_dist_/components/Icon.js"
         }
       ]
     },
@@ -119,6 +119,28 @@
           "path": "web_modules/svelte/transition.js"
         }
       ]
+    },
+    "_dist_/pages/NotFound.css": {
+      "bytes": 172,
+      "imports": []
+    },
+    "_dist_/pages/NotFound.js": {
+      "bytes": 1377,
+      "imports": [
+        {
+          "path": "_dist_/pages/NotFound.css"
+        },
+        {
+          "path": "web_modules/svelte/internal.js"
+        },
+        {
+          "path": "web_modules/svelte/transition.js"
+        }
+      ]
+    },
+    "web_modules/pigeon-generator.js": {
+      "bytes": 4318,
+      "imports": []
     },
     "_dist_/pages/Page2.js": {
       "bytes": 972,
@@ -143,7 +165,7 @@
       ]
     },
     "_dist_/App.js": {
-      "bytes": 2024,
+      "bytes": 2253,
       "imports": [
         {
           "path": "_dist_/App.css"
@@ -158,13 +180,19 @@
           "path": "web_modules/svelte-spa-router/wrap.js"
         },
         {
-          "path": "_dist_/components/Loading.js"
-        },
-        {
           "path": "_dist_/components/AppBar.js"
         },
         {
+          "path": "_dist_/components/Loading.js"
+        },
+        {
           "path": "_dist_/pages/Home.js"
+        },
+        {
+          "path": "_dist_/pages/NotFound.js"
+        },
+        {
+          "path": "web_modules/pigeon-generator.js"
         },
         {
           "path": "_dist_/pages/Page2.js"
@@ -190,7 +218,7 @@
     "../node_modules/.cache/snowpack/~~bundle~~/_dist_/index.js": {
       "imports": [
         {
-          "path": "../node_modules/.cache/snowpack/~~bundle~~/_dist_/chunk.LAPLTLH4.js"
+          "path": "../node_modules/.cache/snowpack/~~bundle~~/_dist_/chunk.2RPK45OS.js"
         }
       ],
       "exports": [
@@ -203,55 +231,64 @@
         "_dist_/App.css": {
           "bytesInOutput": 0
         },
-        "web_modules/common/index-828da665.js": {
-          "bytesInOutput": 1400
+        "web_modules/common/index-5064bbf8.js": {
+          "bytesInOutput": 1445
         },
-        "web_modules/common/wrap-14f018b7.js": {
+        "web_modules/common/wrap-aa6f377e.js": {
           "bytesInOutput": 873
         },
         "web_modules/svelte-spa-router.js": {
-          "bytesInOutput": 5888
+          "bytesInOutput": 5879
         },
         "web_modules/svelte-spa-router/wrap.js": {
           "bytesInOutput": 0
+        },
+        "_dist_/components/AppBar.css": {
+          "bytesInOutput": 0
+        },
+        "_dist_/components/PigeonIcon.css": {
+          "bytesInOutput": 0
+        },
+        "_dist_/components/PigeonIcon.js": {
+          "bytesInOutput": 540
+        },
+        "_dist_/components/AppBar.js": {
+          "bytesInOutput": 400
         },
         "_dist_/components/Loading.css": {
           "bytesInOutput": 0
         },
         "_dist_/components/Loading.js": {
-          "bytesInOutput": 779
-        },
-        "_dist_/components/AppBar.css": {
-          "bytesInOutput": 0
-        },
-        "web_modules/feather-icons.js": {
-          "bytesInOutput": 88103
-        },
-        "_dist_/components/Icon.js": {
-          "bytesInOutput": 426
-        },
-        "_dist_/components/AppBar.js": {
-          "bytesInOutput": 481
+          "bytesInOutput": 776
         },
         "_dist_/pages/Home.css": {
           "bytesInOutput": 0
         },
         "_dist_/pages/Home.js": {
-          "bytesInOutput": 731
+          "bytesInOutput": 726
+        },
+        "_dist_/pages/NotFound.css": {
+          "bytesInOutput": 0
+        },
+        "_dist_/pages/NotFound.js": {
+          "bytesInOutput": 472
+        },
+        "web_modules/pigeon-generator.js": {
+          "bytesInOutput": 2602
         },
         "_dist_/App.js": {
-          "bytesInOutput": 669
+          "bytesInOutput": 694
         },
         "_dist_/index.js": {
-          "bytesInOutput": 128
+          "bytesInOutput": 127
         }
       },
-      "bytes": 99893
+      "bytes": 14807
     },
     "../node_modules/.cache/snowpack/~~bundle~~/_dist_/pages/Page2.js": {
       "imports": [
         {
-          "path": "../node_modules/.cache/snowpack/~~bundle~~/_dist_/pages/chunk.LAPLTLH4.js"
+          "path": "../node_modules/.cache/snowpack/~~bundle~~/_dist_/pages/chunk.2RPK45OS.js"
         }
       ],
       "exports": [
@@ -262,12 +299,12 @@
           "bytesInOutput": 250
         }
       },
-      "bytes": 403
+      "bytes": 389
     },
     "../node_modules/.cache/snowpack/~~bundle~~/_dist_/pages/Page3.js": {
       "imports": [
         {
-          "path": "../node_modules/.cache/snowpack/~~bundle~~/_dist_/pages/chunk.LAPLTLH4.js"
+          "path": "../node_modules/.cache/snowpack/~~bundle~~/_dist_/pages/chunk.2RPK45OS.js"
         }
       ],
       "exports": [
@@ -278,9 +315,9 @@
           "bytesInOutput": 250
         }
       },
-      "bytes": 403
+      "bytes": 389
     },
-    "../node_modules/.cache/snowpack/~~bundle~~/chunk.LAPLTLH4.js": {
+    "../node_modules/.cache/snowpack/~~bundle~~/chunk.2RPK45OS.js": {
       "imports": [],
       "exports": [
         "a",
@@ -305,7 +342,7 @@
         "t"
       ],
       "inputs": {
-        "web_modules/common/index-828da665.js": {
+        "web_modules/common/index-5064bbf8.js": {
           "bytesInOutput": 4413
         },
         "web_modules/svelte/internal.js": {
@@ -324,16 +361,22 @@
           "bytesInOutput": 1482
         },
         "_dist_/components/AppBar.css": {
-          "bytesInOutput": 244
+          "bytesInOutput": 306
         },
         "_dist_/components/Loading.css": {
           "bytesInOutput": 678
         },
         "_dist_/pages/Home.css": {
           "bytesInOutput": 367
+        },
+        "_dist_/pages/NotFound.css": {
+          "bytesInOutput": 132
+        },
+        "_dist_/components/PigeonIcon.css": {
+          "bytesInOutput": 83
         }
       },
-      "bytes": 2772
+      "bytes": 3049
     }
   }
 }
