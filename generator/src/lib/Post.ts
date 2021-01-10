@@ -8,6 +8,7 @@ export class Post implements Hydratable {
   id: string;
   author?: User;
   authorName: string;
+  likes: number;
   content: string;
   media: Media[];
   comments?: Post[];
@@ -18,15 +19,18 @@ export class Post implements Hydratable {
     author,
     content,
     media,
+    likes,
     parent,
   }: {
     id: string;
     author: string;
     content: string;
     media: Media[];
+    likes: number;
     parent?: string;
   }) {
     this.id = id;
+    this.likes = likes;
     this.authorName = author;
     this.content = content;
     this.media = media;

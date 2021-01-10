@@ -1,10 +1,13 @@
-import { Hydratable } from './types';
+import { Hydratable, Media } from './types';
 import { Post } from './Post';
 import { Hydrator } from './Hydrator';
 
 export class User implements Hydratable {
   username: string;
   displayName: string;
+  bio?: string;
+  profileImage?: Media;
+  bannerImage?: Media;
   followers?: User[];
   following?: User[];
   posts?: Post[];
@@ -18,16 +21,25 @@ export class User implements Hydratable {
     displayName,
     followers,
     following,
+    profileImage,
+    bio,
+    bannerImage,
   }: {
     username: string;
     displayName: string;
     followers: string[];
     following: string[];
+    bio?: string;
+    profileImage?: Media;
+    bannerImage?: Media;
   }) {
     this.username = username;
     this.displayName = displayName;
     this._followers = followers;
     this._following = following;
+    this.bio = bio;
+    this.profileImage = profileImage;
+    this.bannerImage = bannerImage;
   }
 
   hydrate({ users, posts }: Hydrator): void {

@@ -18,6 +18,9 @@ export interface UnserializedPost {
 export interface UnserializedUser {
   username: string;
   displayName: string;
+  bio?: string;
+  profileImage?: Media;
+  bannerImage?: Media;
 }
 
 export interface UnserializedFollow {
@@ -37,6 +40,9 @@ export interface SerializablePost {
 export interface SerializableUser {
   username: string;
   displayName: string;
+  bio?: string;
+  profileImage?: Media;
+  bannerImage?: Media;
 }
 
 export interface SerializableFollow {

@@ -20,6 +20,9 @@ const serializeUser = (user: UnserializedUser) => {
   users.push({
     username: user.username,
     displayName: user.displayName,
+    bio: user.bio,
+    profileImage: user.profileImage,
+    bannerImage: user.bannerImage,
   });
 };
 
