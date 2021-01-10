@@ -26,9 +26,9 @@ export default <SnowpackUserConfig>{
   },
   experiments: {
     optimize: {
-      bundle: prod,
-      minify: prod,
-      target: 'es2018',
+      preload: true,
+      minify: true,
+      target: 'es2017',
     },
   },
 };

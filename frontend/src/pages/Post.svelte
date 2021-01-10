@@ -29,7 +29,7 @@
   };
 
   const getInteractive = (post: Post): InteractivityType => {
-    return post.id === assert(currentPost).id ? undefined : 'full';
+    return post.id === assert(currentPost).id ? 'header' : 'full';
   };
 </script>
 
