@@ -1,1 +1,0 @@
-{"version":3,"names":[],"sources":["Page3.svelte"],"sourcesContent":["<script lang=\"ts\">import { fade } from 'svelte/transition';\n//# sourceMappingURL=Page3.svelte.js.map</script>\n\n<div in:fade={{ duration: 100 }}>\n  <h3>very good page 3</h3>\n</div>\n"],"mappings":";;;;;;;;;;;;;SAA2B,IAAI,QAAQ,mBAAmB;;;;;;;;;;;;;;;;;;mDAG1C,QAAQ,EAAE,GAAG;;;;;;;;;;;;;;;;;;;"}
