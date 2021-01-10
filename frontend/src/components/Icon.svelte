@@ -4,7 +4,7 @@
   import type { IconName } from './Icon';
 
   export let icon: IconName;
-  export let attrs: FeatherAttributes | undefined = undefined;
+  export let attrs: FeatherAttributes | undefined = { width: 18, height: 18 };
   let svg: string;
   $: svg = icon ? icons[icon].toSvg(attrs) : '';
 </script>

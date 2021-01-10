@@ -10,17 +10,28 @@
 
   const hydrator = new Hydrator(hydratorData);
   hydrator.hydrate();
-  console.log(hydrator);
 
   const routes: RouteDefinition = {
     '/': Home,
-    '/page2': wrap({
-      asyncComponent: () => import('./pages/Page2.svelte'),
+    '/user/:username': wrap({
+      asyncComponent: () => import('./pages/User.svelte'),
       loadingComponent: Loading,
+      props: { hydrator },
     }),
-    '/page3': wrap({
-      asyncComponent: () => import('./pages/Page3.svelte'),
+    '/user/:username/followers': wrap({
+      asyncComponent: () => import('./pages/Followers.svelte'),
       loadingComponent: Loading,
+      props: { hydrator },
+    }),
+    '/user/:username/following': wrap({
+      asyncComponent: () => import('./pages/Following.svelte'),
+      loadingComponent: Loading,
+      props: { hydrator },
+    }),
+    '/post/:id': wrap({
+      asyncComponent: () => import('./pages/Post.svelte'),
+      loadingComponent: Loading,
+      props: { hydrator },
     }),
     '*': NotFound,
   };
@@ -28,10 +39,12 @@
 
 <style lang="scss" global>
   @import 'normalize';
+  @import 'colors';
 
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
       Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: blue-gray(50);
   }
 
   main {
