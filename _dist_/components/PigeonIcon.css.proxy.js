@@ -1,0 +1,1 @@
+if(typeof document!="undefined"){const t=".pigeon-icon-left.svelte-1hh8uyz{-webkit-transform:scaleX(-1);transform:scaleX(-1)}",e=document.createElement("style"),n=document.createTextNode(t);e.type="text/css",e.appendChild(n),document.head.appendChild(e)}

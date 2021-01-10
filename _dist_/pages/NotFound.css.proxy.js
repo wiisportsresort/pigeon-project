@@ -1,0 +1,1 @@
+if(typeof document!="undefined"){const t="div.svelte-1g9hwfx{display:flex;justify-content:center}section.svelte-1g9hwfx{display:flex;flex-direction:column;align-items:center}",e=document.createElement("style"),n=document.createTextNode(t);e.type="text/css",e.appendChild(n),document.head.appendChild(e)}
