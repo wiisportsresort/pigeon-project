@@ -21,6 +21,7 @@ export class Hydrator implements Hydratable {
           bio: user.bio,
           profileImage: user.profileImage,
           bannerImage: user.bannerImage,
+          joinDate: user.joinDate,
         })
       );
     });
@@ -34,6 +35,7 @@ export class Hydrator implements Hydratable {
           author: post.author,
           content: post.content,
           media: post.media,
+          timestamp: post.timestamp,
         })
       );
     });

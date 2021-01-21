@@ -1,6 +1,7 @@
 import { Hydratable, Media } from './types';
 import { Post } from './Post';
 import { Hydrator } from './Hydrator';
+import { toDate } from 'date-fns';
 
 export class User implements Hydratable {
   username: string;
@@ -11,6 +12,7 @@ export class User implements Hydratable {
   followers?: User[];
   following?: User[];
   posts?: Post[];
+  joinDate: Date;
   hydrated = false;
 
   private _followers: string[];
@@ -24,6 +26,7 @@ export class User implements Hydratable {
     profileImage,
     bio,
     bannerImage,
+    joinDate,
   }: {
     username: string;
     displayName: string;
@@ -32,6 +35,7 @@ export class User implements Hydratable {
     bio?: string;
     profileImage?: Media;
     bannerImage?: Media;
+    joinDate: number;
   }) {
     this.username = username;
     this.displayName = displayName;
@@ -40,6 +44,7 @@ export class User implements Hydratable {
     this.bio = bio;
     this.profileImage = profileImage;
     this.bannerImage = bannerImage;
+    this.joinDate = toDate(joinDate);
   }
 
   hydrate({ users, posts }: Hydrator): void {

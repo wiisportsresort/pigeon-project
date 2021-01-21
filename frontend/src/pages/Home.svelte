@@ -1,41 +1,29 @@
 <script lang="ts">
+  import type { Hydrator } from 'pigeon-generator';
   import { fade } from 'svelte/transition';
+  import PostCard from '../components/PostCard.svelte';
 
-  let timer = 0;
-  let clicks = 0;
-
-  setInterval(() => timer++, 1000);
+  export let hydrator: Hydrator;
 </script>
 
 <style lang="scss">
-  button {
-    background-color: orangered;
-    border: none;
-    padding: 8px;
-    color: #000;
-    border-radius: 0.25rem;
-    box-shadow: 4px 4px #ddd;
-    cursor: pointer;
-    transition: background-color 75ms linear;
-    &:hover {
-      background-color: darken(orangered, 8%);
-    }
-    &:active {
-      background-color: darken(orangered, 16%);
-    }
-    &:focus {
-      outline: none;
-    }
-  }
-
-  div {
-    text-align: center;
+  #home {
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    max-width: 700px;
   }
 </style>
 
-<div in:fade={{ duration: 100 }}>
-  <h1>svelte template</h1>
-  <button on:click={() => clicks++}>button</button>
-  <p>button clicks: {clicks}</p>
-  <p>elapsed seconds: {timer}</p>
+<div in:fade={{ duration: 100 }} id="home">
+  <h1>Pigeon</h1>
+  <div class="posts">
+    {#each hydrator.posts
+      .filter(p => !p.parent)
+      .sort(({ timestamp: a }, { timestamp: b }) => a.getDate() - b.getDate()) as post}
+      <PostCard {post} interactive="full" />
+    {/each}
+  </div>
 </div>

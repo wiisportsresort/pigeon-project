@@ -22,9 +22,9 @@
   header {
     display: flex;
     align-items: center;
-    margin-bottom: 4px;
+    margin-bottom: 0.25rem;
     #back-button-wrapper {
-      margin-right: 4px;
+      margin-right: 0.25rem;
     }
   }
 </style>

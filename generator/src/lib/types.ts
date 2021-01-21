@@ -1,6 +1,5 @@
-import type { User } from './User';
 import type { Post } from './Post';
-
+import type { User } from './User';
 export interface Media {
   type: string;
   src: string;
@@ -10,9 +9,10 @@ export interface Media {
 export interface UnserializedPost {
   author: UnserializedUser;
   content: string;
-  media: Media[];
-  likes: number;
-  comments: UnserializedPost[];
+  media?: Media[];
+  likes?: number;
+  comments?: UnserializedPost[];
+  timestamp: Date;
 }
 
 export interface UnserializedUser {
@@ -21,6 +21,7 @@ export interface UnserializedUser {
   bio?: string;
   profileImage?: Media;
   bannerImage?: Media;
+  joinDate: Date;
 }
 
 export interface UnserializedFollow {
@@ -35,6 +36,7 @@ export interface SerializablePost {
   content: string;
   media: Media[];
   likes: number;
+  timestamp: number;
 }
 
 export interface SerializableUser {
@@ -43,6 +45,7 @@ export interface SerializableUser {
   bio?: string;
   profileImage?: Media;
   bannerImage?: Media;
+  joinDate: number;
 }
 
 export interface SerializableFollow {

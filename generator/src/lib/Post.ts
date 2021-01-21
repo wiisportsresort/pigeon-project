@@ -1,5 +1,6 @@
-import { Hydratable, Media } from './types';
+import { toDate } from 'date-fns';
 import { Hydrator } from './Hydrator';
+import { Hydratable, Media } from './types';
 import { User } from './User';
 
 export class Post implements Hydratable {
@@ -13,6 +14,7 @@ export class Post implements Hydratable {
   media: Media[];
   comments?: Post[];
   hydrated = false;
+  timestamp: Date;
 
   constructor({
     id,
@@ -21,6 +23,7 @@ export class Post implements Hydratable {
     media,
     likes,
     parent,
+    timestamp,
   }: {
     id: string;
     author: string;
@@ -28,6 +31,7 @@ export class Post implements Hydratable {
     media: Media[];
     likes: number;
     parent?: string;
+    timestamp: number;
   }) {
     this.id = id;
     this.likes = likes;
@@ -35,6 +39,7 @@ export class Post implements Hydratable {
     this.content = content;
     this.media = media;
     this.parentId = parent;
+    this.timestamp = toDate(timestamp);
   }
 
   hydrate({ users, posts }: Hydrator): void {

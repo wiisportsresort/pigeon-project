@@ -10,15 +10,15 @@
     top: 0;
     width: 100%;
     background-color: white;
-    height: 48px;
+    height: 3rem;
     display: flex;
     align-items: center;
     z-index: 2;
     // box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-    border-bottom: 2px solid blue-gray(200);
+    border-bottom: 0.125rem solid blue-gray(200);
     & > * {
       color: #333;
-      margin-left: 12px;
+      margin-left: 0.75rem;
     }
   }
 

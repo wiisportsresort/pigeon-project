@@ -34,7 +34,7 @@
   }
 
   .user-card {
-    padding: 8px;
+    padding: 0.6rem;
     border: 1px solid blue-gray(300);
     // border-radius: 4px;
     // box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -44,13 +44,13 @@
     position: relative;
 
     .image-col {
-      width: 48px;
+      width: 3rem;
       display: flex;
       flex-direction: column;
-      margin-right: 8px;
+      margin-right: 0.5rem;
       & img {
-        width: 48px;
-        height: 48px;
+        width: 3rem;
+        height: 3rem;
         object-fit: cover;
         border: 1px solid blue-gray(300);
         border-radius: 50%;
@@ -83,7 +83,7 @@
       flex-direction: column;
 
       .content {
-        margin-bottom: 4px;
+        margin-bottom: 0.25rem;
         display: block;
       }
     }

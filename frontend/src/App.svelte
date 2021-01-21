@@ -1,18 +1,21 @@
 <script lang="ts">
+  import { Hydrator, hydratorData } from 'pigeon-generator';
   import type { RouteDefinition } from 'svelte-spa-router';
   import Router from 'svelte-spa-router';
   import { wrap } from 'svelte-spa-router/wrap';
   import AppBar from './components/AppBar.svelte';
   import Loading from './components/Loading.svelte';
-  import Home from './pages/Home.svelte';
   import NotFound from './pages/NotFound.svelte';
-  import { Hydrator, hydratorData } from 'pigeon-generator';
 
   const hydrator = new Hydrator(hydratorData);
   hydrator.hydrate();
 
   const routes: RouteDefinition = {
-    '/': Home,
+    '/': wrap({
+      asyncComponent: () => import('./pages/Home.svelte'),
+      loadingComponent: Loading,
+      props: { hydrator },
+    }),
     '/user/:username': wrap({
       asyncComponent: () => import('./pages/User.svelte'),
       loadingComponent: Loading,
@@ -38,8 +41,8 @@
 </script>
 
 <style lang="scss" global>
-  @import 'normalize';
-  @import 'colors';
+  @import './normalize';
+  @import './colors';
 
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
@@ -48,8 +51,8 @@
   }
 
   main {
-    margin: 8px;
-    margin-top: 64px;
+    margin: 0.5rem;
+    margin-top: 4rem;
   }
 </style>
 

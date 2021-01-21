@@ -3,7 +3,8 @@
   import { pop } from 'svelte-spa-router';
   import { fade } from 'svelte/transition';
   import IconButton from '../components/IconButton.svelte';
-  import type { InteractivityType, PostCardType } from '../components/PostCard.svelte';
+  import LargePostCard from '../components/LargePostCard.svelte';
+  import type { PostCardType } from '../components/PostCard.svelte';
   import PostCard from '../components/PostCard.svelte';
   import { assert } from '../util';
 
@@ -28,45 +29,94 @@
       : 'linked-top';
   };
 
-  const getInteractive = (post: Post): InteractivityType => {
-    return post.id === assert(currentPost).id ? 'header' : 'full';
-  };
+  const isCurrent = (post: Post) => post.id === assert(currentPost).id;
 </script>
 
 <style lang="scss">
   @import '../colors';
 
   #post {
-    max-width: 860px + 32px;
+    max-width: 700px;
     margin: 0 auto;
   }
 
   header {
     display: flex;
     align-items: center;
-    margin-bottom: 4px;
+    margin-bottom: 0.25rem;
+
+    .heading {
+      margin: 0;
+    }
+
     #back-button-wrapper {
-      margin-right: 4px;
+      margin-right: 0.25rem;
     }
   }
 </style>
 
-<div in:fade={{ duration: 100 }}>
-  <div id="post">
-    {#if currentPost}
-      <header>
-        <div id="back-button-wrapper">
-          <div on:click={pop}>
-            <IconButton icon="arrow-left" size={32} iconSize={20} />
+{#key currentPost}
+  <div in:fade={{ duration: 100 }}>
+    <div id="post">
+      {#if currentPost}
+        <header>
+          <div id="back-button-wrapper">
+            <div on:click={pop}>
+              <IconButton icon="arrow-left" size={32} iconSize={20} />
+            </div>
           </div>
-        </div>
-        <span>Post by <b>@{currentPost.author?.username}</b> ({params.id})</span>
-      </header>
-      {#each assert(postChain) as post}
-        <PostCard {post} interactive={getInteractive(post)} type={getPostCardType(post)} />
-      {/each}
-    {:else}
-      <h3>Post not found: <code>{params.id}</code></h3>
-    {/if}
+          <span>Post by <b>@{currentPost.author?.username}</b></span>
+        </header>
+        <section id="posts">
+          {#each assert(postChain) as post}
+            <svelte:component
+              this={isCurrent(post) ? LargePostCard : PostCard}
+              {post}
+              showParent={isCurrent(post)}
+              interactive={isCurrent(post) ? 'header' : 'full'}
+              type={getPostCardType(post)}
+            />
+          {/each}
+        </section>
+        {#if currentPost.comments?.length}
+          <h3>Comments</h3>
+          <section id="comments">
+            {#each currentPost.comments as comment}
+              <PostCard
+                post={comment}
+                showParent
+                interactive="full"
+                type={comment.comments?.length ? 'linked-bottom' : undefined}
+              />
+              {#if comment.comments?.length}
+                <PostCard
+                  post={comment.comments[0]}
+                  showParent={false}
+                  interactive="full"
+                  type={comment.comments[0]?.comments?.length ? 'linked-full' : 'linked-top'}
+                />
+                {#if comment.comments[0].comments?.length}
+                  <PostCard
+                    post={comment.comments[0].comments[0]}
+                    showParent={false}
+                    interactive="full"
+                    type="linked-top"
+                  />
+                {/if}
+              {/if}
+            {/each}
+          </section>
+        {/if}
+      {:else}
+        <header>
+          <div id="back-button-wrapper">
+            <div on:click={pop}>
+              <IconButton icon="arrow-left" size={32} iconSize={20} />
+            </div>
+          </div>
+          <span class="heading">Post not found: <code>{params.id}</code></span>
+        </header>
+      {/if}
+    </div>
   </div>
-</div>
+{/key}

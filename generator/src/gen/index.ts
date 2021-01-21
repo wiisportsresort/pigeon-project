@@ -23,6 +23,7 @@ const serializeUser = (user: UnserializedUser) => {
     bio: user.bio,
     profileImage: user.profileImage,
     bannerImage: user.bannerImage,
+    joinDate: user.joinDate.getTime(),
   });
 };
 
@@ -32,12 +33,13 @@ const serializePost = (post: UnserializedPost, parent?: SerializablePost) => {
     id: nanoid(),
     author: post.author.username,
     content: post.content,
-    media: post.media,
-    likes: post.likes,
+    media: post.media ?? [],
+    likes: post.likes ?? 0,
+    timestamp: post.timestamp.getTime(),
   };
 
   posts.push(serialized);
-  post.comments.forEach(comment => serializePost(comment, serialized));
+  (post.comments ?? []).forEach(comment => serializePost(comment, serialized));
 };
 
 const serializeFollow = (follow: UnserializedFollow) => {
