@@ -1,0 +1,1 @@
+if(typeof document!="undefined"){const t="#home.svelte-1lhqr21{display:flex;margin:0 auto;flex-direction:column;align-items:center;flex-grow:1;max-width:700px}",e=document.createElement("style"),d=document.createTextNode(t);e.type="text/css",e.appendChild(d),document.head.appendChild(e)}

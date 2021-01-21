@@ -1,1 +1,0 @@
-{"version":3,"sources":["util.ts"],"names":["assert","value"],"mappings":"AAAA,OAAO,SAASA,MAAT,CAAmBC,KAAnB,EAAiC;AACtC,SAAQA,KAAR;AACD","sourcesContent":["export function assert<T>(value?: T): T {\n  return (value as unknown) as T;\n}\n"]}

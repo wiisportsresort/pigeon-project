@@ -1,1 +1,0 @@
-import{SvelteComponent as l,detach as s,element as i,init as a,insert as c,noop as o,safe_not_equal as f}from"../../web_modules/svelte/internal.js";function u(n){let e;return{c(){e=i("footer")},m(t,r){c(t,e,r)},p:o,i:o,o,d(t){t&&s(e)}}}class m extends l{constructor(e){super();a(this,e,null,u,f,{})}}export default m;
