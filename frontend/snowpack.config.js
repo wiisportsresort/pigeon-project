@@ -9,7 +9,7 @@ module.exports = {
     open: 'none',
   },
   buildOptions: {
-    baseUrl: '/',
+    baseUrl: '/pigeon-project',
     sourcemaps: true,
     sourcemap: true,
   },
