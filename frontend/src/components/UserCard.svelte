@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { User } from 'pigeon-generator';
   import { push } from 'svelte-spa-router';
+  import { formatUserContent } from '../util';
 
   export let user: User;
   export let interactive = false;
@@ -85,6 +86,15 @@
       .content {
         margin-bottom: 0.25rem;
         display: block;
+
+        :global(a) {
+          color: blue(500);
+          transition: color 150ms ease-in-out;
+          text-decoration: none;
+          &:hover {
+            color: blue(700);
+          }
+        }
       }
     }
   }
@@ -99,7 +109,7 @@
       <b>{user?.displayName}</b>
       <span class="username">@{user?.username}</span>
     </span>
-    <span class="content">{user.bio}</span>
+    <span class="content">{@html formatUserContent(user.bio)}</span>
     {#if $$slots.default}
       <hr />
       <slot />

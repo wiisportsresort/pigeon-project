@@ -1,3 +1,4 @@
+/** @type {import("snowpack").SnowpackUserConfig} */
 module.exports = {
   plugins: ['@snowpack/plugin-dotenv', '@snowpack/plugin-svelte', '@snowpack/plugin-typescript'],
   mount: {
@@ -8,8 +9,9 @@ module.exports = {
     open: 'none',
   },
   buildOptions: {
-    baseUrl: '/pigeon-project',
+    baseUrl: '/',
     sourcemaps: true,
+    sourcemap: true,
   },
   packageOptions: {
     sourcemap: true,

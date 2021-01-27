@@ -5,6 +5,7 @@
   import { fade } from 'svelte/transition';
   import PostCard from '../components/PostCard.svelte';
   import { format } from 'date-fns';
+  import { formatUserContent } from '../util';
 
   export let hydrator: Hydrator;
   export let params: { username: string | undefined } = { username: undefined };
@@ -72,8 +73,8 @@
       justify-items: center;
       #pfp {
         border-radius: 50%;
-        max-width: 250px;
-        max-height: 250px;
+        width: 250px;
+        height: 250px;
         border: 0.25rem solid blue-gray(300);
         object-fit: cover;
       }
@@ -93,6 +94,14 @@
     #bio {
       display: block;
       margin-bottom: 8px;
+      :global(a) {
+        color: blue(500);
+        transition: color 150ms ease-in-out;
+        text-decoration: none;
+        &:hover {
+          color: blue(700);
+        }
+      }
     }
 
     #interactions {
@@ -159,82 +168,88 @@
   }
 </style>
 
-<div in:fade={{ duration: 100 }} id="user-wrapper">
-  {#if user}
-    <aside>
-      <div id="pfp-wrapper">
-        <img src={profileImage.src} on:error={setDefaultProfileImage} alt="profile" id="pfp" />
-      </div>
-      <div id="aside-content">
-        <h1>{user.displayName}</h1>
-        <span id="username">@{user.username}</span>
-        <span id="bio">{user.bio}</span>
-        <div id="interactions">
-          <a href={`#/user/${user.username}/followers`}>
-            <b class="number">{user.followers?.length}</b>
-            Followers
-          </a>
-          <a href={`#/user/${user.username}/following`}>
-            <b class="number">{user.following?.length}</b>
-            Following
-          </a>
+{#key user}
+  <div in:fade={{ duration: 100 }} id="user-wrapper">
+    {#if user}
+      <aside>
+        <div id="pfp-wrapper">
+          <img src={profileImage.src} on:error={setDefaultProfileImage} alt="profile" id="pfp" />
         </div>
-        <span id="join-date">Joined <b>{format(user.joinDate, 'MMMM yyy')}</b></span>
-      </div>
-    </aside>
-    <section id="posts">
-      <nav class="tab-list">
-        <a
-          class="tab-item"
-          class:selected={tab === 'posts' || !tab}
-          href={`#/user/${user.username}?tab=posts`}>Posts</a
-        >
-        <a
-          class="tab-item"
-          class:selected={tab === 'posts_with_comments'}
-          href={`#/user/${user.username}?tab=posts_with_comments`}>Posts and comments</a
-        >
-        <a
-          class="tab-item"
-          class:selected={tab === 'media'}
-          href={`#/user/${user.username}?tab=media`}>Media</a
-        >
-      </nav>
-      {#key tab}
-        <div in:fade={{ duration: 100 }}>
-          {#if user.posts}
-            {#if tab === 'posts' || !tab}
-              {#if user.posts.some(p => !p.parent)}
-                {#each user.posts
-                  .filter(p => !p.parent)
-                  .sort(({ timestamp: a }, { timestamp: b }) => a.getDate() - b.getDate()) as post}
+        <div id="aside-content">
+          <h1>{user.displayName}</h1>
+          <span id="username">@{user.username}</span>
+          <span id="bio">{@html formatUserContent(user.bio)}</span>
+          <div id="interactions">
+            <a href={`#/user/${user.username}/followers`}>
+              <b class="number">{user.followers?.length}</b>
+              Followers
+            </a>
+            <a href={`#/user/${user.username}/following`}>
+              <b class="number">{user.following?.length}</b>
+              Following
+            </a>
+          </div>
+          <span id="join-date">Joined <b>{format(user.joinDate, 'MMMM yyy')}</b></span>
+        </div>
+      </aside>
+      <section id="posts">
+        <nav class="tab-list">
+          <a
+            class="tab-item"
+            class:selected={tab === 'posts' || !tab}
+            href={`#/user/${user.username}?tab=posts`}>Posts</a
+          >
+          <a
+            class="tab-item"
+            class:selected={tab === 'posts_with_comments'}
+            href={`#/user/${user.username}?tab=posts_with_comments`}>Posts and comments</a
+          >
+          <a
+            class="tab-item"
+            class:selected={tab === 'media'}
+            href={`#/user/${user.username}?tab=media`}>Media</a
+          >
+        </nav>
+        {#key tab}
+          <div in:fade={{ duration: 100 }}>
+            {#if user.posts}
+              {#if tab === 'posts' || !tab}
+                {#if user.posts.some(p => !p.parent)}
+                  {#each [...user.posts]
+                    .filter(p => !p.parent)
+                    .sort(
+                      ({ timestamp: a }, { timestamp: b }) => b.getTime() - a.getTime()
+                    ) as post}
+                    <PostCard {post} interactive="full" />
+                  {/each}
+                {:else}
+                  <h3>No posts</h3>
+                {/if}
+              {:else if tab === 'posts_with_comments'}
+                {#each [...user.posts].sort(({ timestamp: a }, { timestamp: b }) => b.getTime() - a.getTime()) as post}
                   <PostCard {post} interactive="full" />
                 {/each}
-              {:else}
-                <h3>No posts</h3>
+              {:else if tab === 'media'}
+                {#if user.posts.some(p => p.media.length)}
+                  {#each [...user.posts]
+                    .filter(p => p.media.length)
+                    .sort(
+                      ({ timestamp: a }, { timestamp: b }) => b.getTime() - a.getTime()
+                    ) as post}
+                    <PostCard {post} interactive="full" />
+                  {/each}
+                {:else}
+                  <h3>No posts</h3>
+                {/if}
               {/if}
-            {:else if tab === 'posts_with_comments'}
-              {#each user.posts.sort(({ timestamp: a }, { timestamp: b }) => a.getDate() - b.getDate()) as post}
-                <PostCard {post} interactive="full" />
-              {/each}
-            {:else if tab === 'media'}
-              {#if user.posts.some(p => p.media.length)}
-                {#each user.posts
-                  .filter(p => p.media.length)
-                  .sort(({ timestamp: a }, { timestamp: b }) => a.getDate() - b.getDate()) as post}
-                  <PostCard {post} interactive="full" />
-                {/each}
-              {:else}
-                <h3>No posts</h3>
-              {/if}
+            {:else}
+              <h3>No posts</h3>
             {/if}
-          {:else}
-            <h3>No posts</h3>
-          {/if}
-        </div>
-      {/key}
-    </section>
-  {:else}
-    <h3>User not found: @{params.username}</h3>
-  {/if}
-</div>
+          </div>
+        {/key}
+      </section>
+    {:else}
+      <h3>User not found: @{params.username}</h3>
+    {/if}
+  </div>
+{/key}

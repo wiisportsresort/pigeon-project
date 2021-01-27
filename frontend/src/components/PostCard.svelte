@@ -7,7 +7,7 @@
   import { format } from 'date-fns';
   import type { Post, User } from 'pigeon-generator';
   import { push } from 'svelte-spa-router';
-  import { assert } from '../util';
+  import { assert, formatUserContent } from '../util';
   import Icon from './Icon.svelte';
 
   export let post: Post;
@@ -182,6 +182,15 @@
         margin-bottom: 0.25rem;
         display: block;
 
+        :global(a) {
+          color: blue(500);
+          transition: color 150ms ease-in-out;
+          text-decoration: none;
+          &:hover {
+            color: blue(700);
+          }
+        }
+
         :global(&.interactive):hover {
           cursor: pointer;
         }
@@ -249,7 +258,7 @@
       &nbsp;·&nbsp;
       <span class="gray">{format(post.timestamp, 'MMM d, yyy')}</span>
     </span>
-    <span class="content" use:fullInteractive={post}>{@html post.content}</span>
+    <span class="content" use:fullInteractive={post}>{@html formatUserContent(post.content)}</span>
     {#if post.media.length}
       <span class="media-preview gray">
         <i>{post.media.length} attachment{post.media.length === 1 ? '' : 's'}</i>
@@ -264,12 +273,12 @@
     <div class="interactions" use:fullInteractive={post}>
       <span class="likes">
         <Icon icon="arrow-up" />
-        <span>{post.likes}</span>
+        <span>{post.likes.toLocaleString()}</span>
         <Icon icon="arrow-down" />
       </span>
       <span class="comments" use:fullInteractive={post}>
         <Icon icon="message-square" />
-        <span>{countComments(post)}</span>
+        <span>{countComments(post).toLocaleString()}</span>
       </span>
     </div>
   </div>

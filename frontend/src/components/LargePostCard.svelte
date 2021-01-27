@@ -1,9 +1,8 @@
 <script lang="ts">
   import { format } from 'date-fns';
-
   import type { Post, User } from 'pigeon-generator';
   import { push } from 'svelte-spa-router';
-  import { assert } from '../util';
+  import { assert, formatUserContent } from '../util';
   import type { InteractivityType, PostCardType } from './PostCard.svelte';
 
   export let post: Post;
@@ -64,17 +63,17 @@
       align-items: center;
       margin-bottom: 0.5rem;
 
+      &.interactive img:hover {
+        cursor: pointer;
+        background-color: #0000000f;
+        filter: brightness(90%);
+      }
+
       aside:first-of-type {
         position: relative;
         display: flex;
         flex-direction: column;
         margin-right: 0.5rem;
-
-        &.interactive img:hover {
-          cursor: pointer;
-          background-color: #0000000f;
-          filter: brightness(90%);
-        }
 
         & img {
           width: 3rem;
@@ -142,6 +141,15 @@
         margin: 0.5rem 0 0;
         display: block;
         font-size: 1.5rem;
+
+        :global(a) {
+          color: blue(500);
+          transition: color 150ms ease-in-out;
+          text-decoration: none;
+          &:hover {
+            color: blue(700);
+          }
+        }
       }
 
       .media {
@@ -158,13 +166,14 @@
 
           img {
             border-radius: 0.5rem;
+            max-width: 100%;
           }
 
           .caption {
             border-radius: 0 0 0.5rem 0.5rem;
             color: white;
             width: 100%;
-            padding: 0.25rem;
+            padding: 0.5rem 0.25rem;
             position: absolute;
             bottom: 0%;
             left: 0;
@@ -232,7 +241,7 @@
         <strong>@{post.parent.author?.username}</strong>
       </span>
     {/if}
-    <span class="content">{@html post.content}</span>
+    <span class="content">{@html formatUserContent(post.content)}</span>
     {#if post.media.length}
       <div class="media">
         {#each post.media as media, index}
@@ -258,11 +267,11 @@
     <hr />
     <div class="interactions" use:fullInteractive={post}>
       <span class="likes">
-        <strong>{post.likes}</strong>
+        <strong>{post.likes.toLocaleString()}</strong>
         points
       </span>
       <span class="comments" use:fullInteractive={post}>
-        <strong>{commentCount}</strong>
+        <strong>{commentCount.toLocaleString()}</strong>
         comment{commentCount === 1 ? '' : 's'}
       </span>
       <span class="timestamp">

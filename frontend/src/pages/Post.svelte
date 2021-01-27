@@ -81,7 +81,7 @@
         {#if currentPost.comments?.length}
           <h3>Comments</h3>
           <section id="comments">
-            {#each currentPost.comments as comment}
+            {#each [...currentPost.comments].sort(({ timestamp: a }, { timestamp: b }) => b.getTime() - a.getTime()) as comment}
               <PostCard
                 post={comment}
                 showParent
