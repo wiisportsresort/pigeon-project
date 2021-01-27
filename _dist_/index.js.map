@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["/home/runner/work/pigeon-project/pigeon-project/frontend/src/index.ts"],
+  "sourcesContent": ["import App from './App.svelte';\n\nconst app = new App({\n  target: document.body,\n});\n\nexport default app;\n\nif (import.meta.hot) {\n  import.meta.hot.accept();\n  import.meta.hot.dispose(() => {\n    app.$destroy();\n  });\n}\n"],
+  "mappings": "AAAA;AAEA,MAAM,MAAM,IAAI,IAAI;AAAA,EAClB,QAAQ,SAAS;AAAA;AAGnB,eAAe;AAEf,IAAI,YAAY;AACd,cAAY,IAAI;AAChB,cAAY,IAAI,QAAQ;AACtB,QAAI;AAAA;AAAA;",
+  "names": []
+}

@@ -1,1 +1,1 @@
-import{O as a}from"../common/index-32a68b49.js";function m(t,{delay:o=0,duration:e=400,easing:i=a}){const n=+getComputedStyle(t).opacity;return{delay:o,duration:e,easing:i,css:c=>`opacity: ${c*n}`}}export{m as fade};
+import{O as m}from"../common/index-c4116005.js";function p(t,{delay:o=0,duration:e=400,easing:c=m}){const i=+getComputedStyle(t).opacity;return{delay:o,duration:e,easing:c,css:n=>`opacity: ${n*i}`}}export{p as fade};

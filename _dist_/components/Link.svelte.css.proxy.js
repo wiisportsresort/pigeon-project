@@ -1,0 +1,1 @@
+if(typeof document!="undefined"){const t="a.svelte-i2nhx1{color:#3b82f6;transition:color 150ms ease-in-out;text-decoration:none}a.svelte-i2nhx1:hover{color:#1d4ed8}",e=document.createElement("style"),o=document.createTextNode(t);e.type="text/css",e.appendChild(o),document.head.appendChild(e)}
