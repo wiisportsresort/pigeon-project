@@ -24,7 +24,7 @@
     "modern-normalize": "^1.0.0",
     "nanoid": "^3.1.20",
     "pigeon-generator": "1.0.0",
-    "postcss": "^8.2.4",
+    "postcss": "^8.2.10",
     "qs": "^6.9.6",
     "sass": "^1.32.5",
     "snowpack": "^3.0.11",
