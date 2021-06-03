@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["/home/runner/work/pigeon-project/pigeon-project/frontend/src/util.ts"],
-  "sourcesContent": ["import type { Post, Hydrator } from 'pigeon-generator';\n\nexport function assert<T>(value?: T): T {\n  return (value as unknown) as T;\n}\n\nexport const formatUserContent = (content = ''): string => {\n  // const mentionPattern = /\\b@(\\w+)\\b/g;\n  // let match: RegExpMatchArray | null;\n  // while ((match = mentionPattern.exec(post.content)) !== null) {\n  //   console.log(match);\n  // }\n\n  return content\n    .replace(/\\n/g, '<br />')\n    .replace(/(?<=\\b|\\s|^)@(\\w+)(?=\\b|\\s|$)/g, '<a href=\"#/user/$1\">@$1</a>');\n};\n"],
-  "mappings": "AAEO,uBAAmB;AACxB,SAAQ;AAAA;AAGH,aAAM,oBAAoB,CAAC,UAAU;AAO1C,SAAO,QACJ,QAAQ,OAAO,UACf,QAAQ,kCAAkC;AAAA;",
-  "names": []
-}
